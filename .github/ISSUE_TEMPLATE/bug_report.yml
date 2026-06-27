@@ -1,0 +1,56 @@
+name: Bug Report
+description: File a bug report
+labels: ["bug", "triage"]
+assignees:
+  - cleder
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: When I run deptryrs on a project with X, it reports Y instead of Z.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to reproduce the behaviour.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: deptryrs version
+      placeholder: "0.1.0 or `deptryrs --version` output"
+    validations:
+      required: true
+  - type: input
+    id: rust-version
+    attributes:
+      label: Rust toolchain version
+      placeholder: "rustc 1.85.0"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Ubuntu 24.04 / macOS 15.x / Windows 11"
+    validations:
+      required: true

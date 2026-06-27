@@ -1,0 +1,52 @@
+name: Compatibility
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+jobs:
+  toolchain-compat:
+    name: Rust ${{ matrix.toolchain }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - beta
+          - nightly
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install ${{ matrix.toolchain }} Rust toolchain
+        uses: dtolnay/rust-toolchain@67ef31d5b988238dd797d409d6f9574278e20537 # master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - name: Cache Cargo registry and build artifacts
+        uses: Swatinem/rust-cache@400e7407cfd7a091e5fbb6afec01ec146c432b7c # v2.7.7
+        with:
+          key: ${{ matrix.toolchain }}
+      - name: cargo check (${{ matrix.toolchain }})
+        run: cargo check --workspace --all-targets
+        continue-on-error: ${{ matrix.toolchain == 'nightly' }}
+      - name: cargo test (${{ matrix.toolchain }})
+        run: cargo test --workspace --all-targets
+        continue-on-error: ${{ matrix.toolchain == 'nightly' }}
+  msrv:
+    name: Minimum Supported Rust Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install cargo-msrv
+        uses: taiki-e/install-action@e03236526ace47fa2e04bebcfc6da471ebd4690c # v2.49.0
+        with:
+          tool: cargo-msrv
+      - name: Verify MSRV
+        # edition 2024 requires Rust 1.85.0 minimum
+        run: cargo msrv --min 1.85.0 verify

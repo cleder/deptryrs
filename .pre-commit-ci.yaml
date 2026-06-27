@@ -1,0 +1,8 @@
+ci:
+  autoupdate_schedule: weekly
+  autoupdate_commit_msg: "chore(pre-commit): autoupdate hook versions"
+  autofix_commit_msg: "style: pre-commit autofix"
+  skip:
+    - semgrep
+    - trufflehog
+    - talisman-commit
