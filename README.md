@@ -1,6 +1,5 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [deptryrs](#deptryrs)
   - [Step 1: Configure Cargo.toml to Bind the Two Codebases](#step-1-configure-cargotoml-to-bind-the-two-codebases)
