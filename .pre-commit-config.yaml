@@ -25,7 +25,7 @@ repos:
     stages:
     - commit-msg
 - repo: https://github.com/crate-ci/typos
-  rev: v1.47.2
+  rev: v1
   hooks:
   - id: typos
 - repo: https://github.com/doublify/pre-commit-rust
@@ -44,7 +44,7 @@ repos:
     - --
     - --check
 - repo: https://github.com/gitleaks/gitleaks
-  rev: v8.30.1
+  rev: v8.30.0
   hooks:
   - id: gitleaks
 - repo: https://github.com/google/yamlfmt
@@ -92,11 +92,11 @@ repos:
   - id: requirements-txt-fixer
   - id: trailing-whitespace
 - repo: https://github.com/rvben/rumdl-pre-commit
-  rev: v0.2.23
+  rev: v0.2.26
   hooks:
   - id: rumdl-fmt
 - repo: https://github.com/semgrep/semgrep
-  rev: v1.168.0
+  rev: v1.165.0
   hooks:
   - id: semgrep
     args:
@@ -112,7 +112,7 @@ repos:
   hooks:
   - id: talisman-commit
 - repo: https://github.com/trufflesecurity/truffleHog
-  rev: v3.95.6
+  rev: v3.95.7
   hooks:
   - id: trufflehog
     args:
