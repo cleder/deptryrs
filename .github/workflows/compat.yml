@@ -27,7 +27,7 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
       - name: Cache Cargo registry and build artifacts
-        uses: Swatinem/rust-cache@f0deed1e0edfc6a9be95417288c0e1099b1eeec3 # v2.7.7
+        uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
         with:
           key: ${{ matrix.toolchain }}
       - name: cargo check (${{ matrix.toolchain }})
@@ -44,7 +44,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install cargo-msrv
-        uses: taiki-e/install-action@bffeee26d4db9be238a4ea78d8826604ebcb594d # v2.82.5
+        uses: taiki-e/install-action@9bcaee1dcae34154180f412e2fa69355a7cda9f6 # v2.82.6
         with:
           tool: cargo-msrv
       - name: Verify MSRV
