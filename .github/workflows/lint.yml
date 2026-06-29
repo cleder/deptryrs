@@ -33,7 +33,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install taplo
-        uses: uncenter/setup-taplo@f8558f8df9a761a34911ffd21fd1665bf95d21ad # v1.0.0
+        uses: uncenter/setup-taplo@4f203fdb4f3b1e289c8382cf90d8397d2338df2e # v1.0.8
       - name: taplo check
         run: taplo check
   yaml-check:
